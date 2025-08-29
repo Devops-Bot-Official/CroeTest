@@ -4,7 +4,8 @@ identifier: CrowAks
 category: Production
 username: devopsbot
 environment:
-  # === Crowstore-backed values ===
+
+  # === Crowstore-backed value ===
   IMAGE:    { value: crowstore://image }
   CONFIG_PATH:    { value: crowstore://configpath}
   NAMESPACE:    { value: crowstore://namespace }
