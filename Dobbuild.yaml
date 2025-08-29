@@ -19,10 +19,10 @@ environment:
   CROWSTORE_TOKEN_CLINAME: { value: 7a8558d796d3a52be42995546184ea8c }
   CROWSTORE_TOKEN_CONTAINER: { value: 260f3848a2f92c2f818c1a5a1fe1b898 }
 jobs:
-- name: CROW DEPLOYMENT
+- name: CROW DEPLOYMENT 1
   stages:
   # ---------------------------------------------------------
-  # Scenario 2: Set image & scale, then verify rollout
+  # Scenario 2: Set image & scale, then verify 
   # Auth via kubeconfig_path
   # ---------------------------------------------------------
   - name: K8s | Update image & Scale
