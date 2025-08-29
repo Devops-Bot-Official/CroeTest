@@ -10,6 +10,7 @@ environment:
   CONFIG_PATH:    { value: crowstore://configpath}
   NAMESPACE:    { value: crowstore://namespace }
   CLI_NAME:    { value: crowstore://cliname }
+  CONTAINER: { value: crowstore://container }
 
   # === Matching Crowstore tokens (CROWSTORE_TOKEN_<CREDNAME UPPERCASED>) ===
   # These must match the *names after* crowstore:// exactly (uppercased, no extra underscores).
@@ -17,6 +18,7 @@ environment:
   CROWSTORE_TOKEN_CONFIGPATH:   { value: 7250b6b0c1c25ab917030a44a27706cc }
   CROWSTORE_TOKEN_NAMESPACE: { value: b4463831286f8e9922983f0660a6ada7 }
   CROWSTORE_TOKEN_CLINAME: { value: 7a8558d796d3a52be42995546184ea8c }
+  CROWSTORE_TOKEN_CONTAINER: { value: 260f3848a2f92c2f818c1a5a1fe1b898 }
 jobs:
 - name: CROW DEPLOYMENT
   stages:
