@@ -35,11 +35,11 @@ jobs:
         steps:
           - action: set_image
             kind: "deployment"
-            name: env=CLINAME
+            name: env=CLI_NAME
             container: env=CONTAINER
             image: env=IMAGE
   
           - action: rollout_status
             kind: "deployment"
-            name: env=CLINAME
+            name: env=CLI_NAME
             timeout: "240s"
