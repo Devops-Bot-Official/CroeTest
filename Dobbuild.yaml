@@ -1,0 +1,44 @@
+version: '1.0'
+mode: remote
+identifier: CrowAks
+category: Production
+username: devopsbot
+environment:
+  # === Crowstore-backed values ===
+  IMAGE:    { value: crowstore://image }
+  CONFIG_PATH:    { value: crowstore://configpath}
+  NAMESPACE:    { value: crowstore://namespace }
+  CLI_NAME:    { value: crowstore://cliname }
+
+  # === Matching Crowstore tokens (CROWSTORE_TOKEN_<CREDNAME UPPERCASED>) ===
+  # These must match the *names after* crowstore:// exactly (uppercased, no extra underscores).
+  CROWSTORE_TOKEN_IMAGE:    { value: 9dd69f8e14cc33c892a4ed408a9427dd }
+  CROWSTORE_TOKEN_CONFIGPATH:   { value: 7250b6b0c1c25ab917030a44a27706cc }
+  CROWSTORE_TOKEN_NAMESPACE: { value: b4463831286f8e9922983f0660a6ada7 }
+  CROWSTORE_TOKEN_CLINAME: { value: 7a8558d796d3a52be42995546184ea8c }
+jobs:
+- name: CROW DEPLOYMENT
+  stages:
+  # ---------------------------------------------------------
+  # Scenario 2: Set image & scale, then verify rollout
+  # Auth via kubeconfig_path
+  # ---------------------------------------------------------
+  - name: K8s | Update image & Scale
+    tasks:
+      kubernetes:
+        enabled: true
+        kubeconfig_path: env=CONFIG_PATH
+        namespace: env=NAMESPACE
+        dry_run: false
+        verbose: false
+        steps:
+          - action: set_image
+            kind: "deployment"
+            name: env=CLINAME
+            container: env=CONTAINER
+            image: env=IMAGE
+  
+          - action: rollout_status
+            kind: "deployment"
+            name: env=CLINAME
+            timeout: "240s"
